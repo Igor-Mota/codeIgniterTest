@@ -1,0 +1,24 @@
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.h-75{
+  height: 75%;
+}
+
+.h-100vh{
+  height: 100vh;
+}
+.h-100{
+  height: 100%;
+}
+.genral-form{
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center
+  ;
+}
