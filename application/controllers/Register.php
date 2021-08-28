@@ -28,4 +28,17 @@ class Register extends CI_Controller {
         
     }
   }
+
+  public function auth(){
+    if(!empty($_POST) ){
+      $form_data =   $_POST;
+
+      if($form_data['password'] != $form_data['check_password'] ){
+          echo 'as senhas devem ser iguais ';
+      
+          return;
+        }
+        $this->register_model->register($form_data);
+      }
+  }
 }

@@ -12,9 +12,11 @@ function auth($formdata){
     return;
     }
     $formdata['password'] = md5($formdata['password']);
-    $sql = "SELECT * FROM users WHERE email = ?";
-    $response = $this->db->query($sql, $formdata['email'])->result_array();
-    dump($response);
+    $this->db->where('email',$formdata['email']);
+    $this->db->where('password',$formdata['password']);
+    $response = $this->db->get('users')->result_array();
+    unset($response[0]['PASSWORD']);
+    
     return  $response;
   
   }
