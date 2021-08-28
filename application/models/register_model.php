@@ -15,7 +15,5 @@ class register_model extends CI_Model{
       if($response->num_rows() == 0){
           $response = $this->db->insert('users', $formdata);
       }
-      dump($response);
-
   }
 }

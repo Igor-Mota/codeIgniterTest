@@ -9,11 +9,13 @@ class Register extends CI_Controller {
 		
 	}
 
+	public function index(){
+      $data = [
+          'title' => 'crud bolado'
 
-	public function index()
-	{
-		$this->load->view('register');
-    
+      ];
+		$this->load->view('register', $data);
+      
     if(!empty($_POST) ){
       $form_data =   $_POST;
 
@@ -25,11 +27,5 @@ class Register extends CI_Controller {
         $this->register_model->register($form_data);
         
     }
-
   }
-
-  public function form_data(){
-
-  }
-
 }

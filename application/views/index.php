@@ -13,12 +13,14 @@
 <body>
     <div class='container center h-100vh'>
         <div class='border rounded  w-50 center h-75'>
-            <form action="" mthod='post' class='genral-form w-75 '>
+
+            <form action="index/auth" method='post' class='genral-form w-75 '>
+          
               <label for="">E-mail</label>
-                <input  class='form-control m-3' type="email" name='email' value=''>
+                <input  class='form-control m-3' type="email" name='email' value='igorr@gmail'>
               
                 <label for="">Senha</label>
-                <input class='form-control m-3' type="password" name='password'>
+                <input class='form-control m-3' type="password" name='password' value='123'>
    
                   <button type='submit' class='btn btn-primary w-100 m-2 p-2'>Entrar</button>
                 

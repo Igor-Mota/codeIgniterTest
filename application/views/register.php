@@ -12,14 +12,13 @@
 </head>
 <body>
     <div class='container center h-100vh'>
+
         <div class='border rounded  w-50 center h-75'>
             <form action="register" method='post' class='genral-form w-75 '>
               <label for="">E-mail</label>
                 <input  class='form-control m-3' type="email" name='email' value='igor@gmail'>
-              
                 <label for="">Senha</label>
                 <input class='form-control m-3' type="password" name='password' value='123'>
-
                 <label for="">Confirmar senha</label>
                 <input class='form-control m-3' type="password" name='check_password' value='123'>
 
@@ -29,9 +28,7 @@
               </form>
         </div>
     </div>
-
     <script>
-
     </script>
 </body>
 </html>
