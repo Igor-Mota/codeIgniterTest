@@ -13,7 +13,13 @@ class register_model extends CI_Model{
       $response  = $this->db->query($sql, $email);
 
       if($response->num_rows() == 0){
-          $response = $this->db->insert('users', $formdata);
+          $this->db->insert('users', $formdata);
+          $this->db->where('email',$formdata['email']);
+          $response = $this->db->get('users')->result_array();
+          unset($response[0]['PASSWORD']);
+          return $response;
+      }else{
+        return $response = ['message' => 'user already exist'];
       }
   }
 }

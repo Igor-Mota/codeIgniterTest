@@ -11,9 +11,12 @@
   <link href='./styles/shared.css' rel='stylesheet'>
 </head>
 <body>
-    <div class='container center h-100vh'>
-
-        <div class='border rounded  w-50 center h-75'>
+    <div class='container  h-100vh'>
+      <div class='column'>
+      <?php if($_SESSION): ?>
+        <p class='alert alert-danger'>usuario ja existe</p>
+        <?php endif ?>
+        <div class='border rounded  w-50  h-75 center'>
             <form action="register" method='post' class='genral-form w-75 '>
               <label for="">E-mail</label>
                 <input  class='form-control m-3' type="email" name='email' value='igor@gmail'>
@@ -21,11 +24,10 @@
                 <input class='form-control m-3' type="password" name='password' value='123'>
                 <label for="">Confirmar senha</label>
                 <input class='form-control m-3' type="password" name='check_password' value='123'>
-
                   <button type='submit' class='btn btn-primary w-100 m-2 p-2'>Cadastrar</button>
-                
                   <a href="/"  class='btn btn-secondary w-100 p-2'>Fazer  login</a>
               </form>
+        </div>
         </div>
     </div>
     <script>

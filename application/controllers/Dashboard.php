@@ -1,14 +1,18 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
-
+class Dashboard extends MY_Controller{
   function __construct(){
 		parent::__construct();
-    $this->load->model('register_model');
-		
+
 	}
 	public function index(){
+      $this->load->view('navBar');
       $this->load->view('dashboard');
+  }
+
+  public function quit(){
+    $this->session->sess_destroy();
+    redirect(base_url());
   }
 }

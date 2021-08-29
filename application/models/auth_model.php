@@ -8,8 +8,7 @@ class auth_model extends CI_Model{
 
 function auth($formdata){
   if(empty($formdata['email'] || $formdata['password'])){
-     echo  'preencha todoss os campos';
-    return;
+    return ;
     }
     $formdata['password'] = md5($formdata['password']);
     $this->db->where('email',$formdata['email']);

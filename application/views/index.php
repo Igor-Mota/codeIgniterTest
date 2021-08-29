@@ -11,9 +11,10 @@
   <link href='./styles/shared.css' rel='stylesheet'>
 </head>
 <body>
-    <div class='container center h-100vh'>
-        <div class='border rounded  w-50 center h-75'>
-
+    <div class='container  h-100vh'>
+    <div class="column">
+        <div class='border rounded  w-50  h-75 center'>
+            
             <form action="index/auth" method='post' class='genral-form w-75 '>
           
               <label for="">E-mail</label>
@@ -26,6 +27,7 @@
                 
                   <a href="<?php ?>register"  class='btn btn-secondary w-100 p-2'>Criar conta</a>
               </form>
+        </div>
         </div>
     </div>
 </body>

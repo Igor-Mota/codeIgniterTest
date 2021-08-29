@@ -54,6 +54,7 @@ function xss_clean($data)
     return $data;
 }
 
+
 if (!function_exists('dump')) {
     function dump($var, $label = 'Dump', $echo = true)
     {
