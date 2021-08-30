@@ -1,13 +1,15 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class MY_Controller extends CI_Controller {
-  public function __construct(){
+class MY_Controller extends CI_Controller
+{
+  public function __construct()
+  {
     parent::__construct();
     $this->load->helper('url');
 
-    if(!$_SESSION['logged_user']){
+    if (!$_SESSION['logged_user']) {
       redirect(base_url());
     }
-	}
+  }
 }

@@ -1,37 +1,63 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Register extends CI_Controller {
+class Register extends CI_Controller
+{
 
-  function __construct(){
-		parent::__construct();
-    $this->load->model('register_model');	
-	}
+  function __construct()
+  {
+    parent::__construct();
+    $this->load->model('register_model');
+    $this->load->helper(array('security', 'url', 'form'));
+    $this->load->library('form_validation');
+  }
 
-	public function index(){
-    $data = [
-        'let' => 't'
-    ];
-		$this->load->view('register', $data);
-    $this->load->helper('url');   
+  public function index()
+  {
+    if (isset($_SESSION['logged_user'])) {
+      redirect(base_url() . 'dashboard');
+    }
+
+      $this->load->view('register');
+  }
+
+  public function post(){
+    $config =  array(
+      array(
+        'field' => 'email',
+        'label' => 'E-mail',
+        'rules' => 'required|valid_email'
+      ),
+      array(
+        'field' => 'password',
+        'label' => 'Senha',
+        'rules' => 'required'
+      )
+    );
+
+    if (!empty($_POST['email']) && !empty($_POST['password'])){
+
+      $form_data = $_POST;
+
+      $this->form_validation->set_rules($config);
+      $this->form_validation->set_error_delimiters('<p class="alert alert-warning w-50" style="text-align:center">' , '</p>');
       
-    if(!empty($_POST) ){
-      $form_data =   $_POST;
+      if ($this->form_validation->run() == false) {
+          $this->load->view('register');
+      
+      }else{
+        $response = $this->register_model->register($form_data);
+        if (!isset($response['message'])) {
 
-      if($form_data['password'] != $form_data['check_password'] ){
-          echo 'as senhas devem ser iguais ';
-          return;
-        }
-       $response = $this->register_model->register($form_data);
-        if(!isset($response['message'])){
           $this->session->set_userdata('logged_user', $response);
-          redirect(base_url().'dashboard');
-        }else{
-            $data = [
-                'message' => 'quale'
-            ];
-          dump($response);
+          redirect(base_url() . 'dashboard');
+        
+        } else {
+          $this->session->set_flashdata('msg', 'already exists');
+          $this->load->view('register');
+     
         }
+      }      
     }
   }
 }

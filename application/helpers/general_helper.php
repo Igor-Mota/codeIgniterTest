@@ -377,6 +377,9 @@ if (!function_exists('do_debug')) {
         echo '</code></pre>';
     }
 
+
+/*
+
     if (!function_exists('validate_recaptcha')) {
         function validate_recaptcha()
         {
@@ -406,6 +409,7 @@ if (!function_exists('do_debug')) {
             }
         }
     }
+    
 
     if (!function_exists('aws_upload')) {
         function aws_upload()
@@ -436,7 +440,7 @@ if (!function_exists('do_debug')) {
             }
         }
     }
-
+*/
     function is_data_passed($date)
     {
         $now = date("Y/m/d H:i:s");
