@@ -18,45 +18,45 @@ class Register extends CI_Controller
       redirect(base_url() . 'dashboard');
     }
 
-      $this->load->view('register');
+    $this->load->view('register');
   }
 
-  public function post(){
+  public function post()
+  {
     $config =  array(
       array(
         'field' => 'email',
         'label' => 'E-mail',
-        'rules' => 'required|valid_email'
+        'rules' => ' trim|required|valid_email',
       ),
       array(
         'field' => 'password',
         'label' => 'Senha',
         'rules' => 'required'
+      ),
+      array(
+        'field' => 'check_password',
+        'label' => 'Verificar senha',
+        'rules' => 'required'
       )
     );
+    $form_data = $_POST;
 
-    if (!empty($_POST['email']) && !empty($_POST['password'])){
+    $this->form_validation->set_rules($config);
+    $this->form_validation->set_error_delimiters('<p class="alert alert-warning w-50" style="text-align:center">', '</p>');
 
-      $form_data = $_POST;
+    if ($this->form_validation->run() == false) {
+      $this->load->view('register');
+    } else {
+      $response = $this->register_model->register($form_data);
+      if (!isset($response['message'])) {
 
-      $this->form_validation->set_rules($config);
-      $this->form_validation->set_error_delimiters('<p class="alert alert-warning w-50" style="text-align:center">' , '</p>');
-      
-      if ($this->form_validation->run() == false) {
-          $this->load->view('register');
-      
-      }else{
-        $response = $this->register_model->register($form_data);
-        if (!isset($response['message'])) {
-
-          $this->session->set_userdata('logged_user', $response);
-          redirect(base_url() . 'dashboard');
-        
-        } else {
-          $this->session->set_flashdata('msg', 'already exists');
-          $this->load->view('register');
-        }
-      }      
+        $this->session->set_userdata('logged_user', $response);
+        redirect(base_url() . 'dashboard');
+      } else {
+        $this->session->set_flashdata('msg', 'already exists');
+        $this->load->view('register');
+      }
     }
   }
 }

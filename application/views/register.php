@@ -27,18 +27,23 @@
       <div class='border rounded  w-50  h-75 center'>
 
         <?php echo form_open(base_url().'register/post', 'class="genral-form w-75 "') ?>
-      <!-- <form action="register" method='post' class='genral-form w-75 '> -->
+
           <label for="email">E-mail</label>
-         <!--  -->
-          <input class='form-control m-3' type="email" name='email' value='igor@gmail'>
+
+          <input class='form-control m-3' type="email" name='email' value='<?php  ?>'>
       
           <label for="">Senha</label>
-          <input class='form-control m-3' type="password" name='password' value='123'>
+
+          <input class='form-control m-3' type="password" name='password' value=''>
+
           <label for="">Confirmar senha</label>
-          <input class='form-control m-3' type="password" name='check_password' value='123'>
+
+          <input class='form-control m-3' type="password" name='check_password' value=''>
+
           <button type='submit' class='btn btn-primary w-100 m-2 p-2'>Cadastrar</button>
+
           <a href="/" class='btn btn-secondary w-100 p-2'>Fazer login</a>
-       <!--  </form> -->
+
         <?php echo form_close() ?>
       </div>
     </div>
@@ -48,13 +53,18 @@
 </body>
         
 <script>
-  
   if(window.location.href === '<?php echo base_url().'register/post'?>'){
   setTimeout(() =>{
     if(document.querySelector('#exist')){
       document.querySelector('#exist').style.display = 'none'
     }
-  },4000)
+    if(document.querySelector('.alert-warning')){
+     var els = document.querySelectorAll('.alert-warning')
+     for(i = 0; i < els.length; i++){
+       els[i].style.display = 'none'
+     }
+    }
+  },2000)
 }
 </script>
 </html>
