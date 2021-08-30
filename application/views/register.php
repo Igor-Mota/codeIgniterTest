@@ -48,10 +48,13 @@
 </body>
         
 <script>
+  
+  if(window.location.href === '<?php echo base_url().'register/post'?>'){
   setTimeout(() =>{
     if(document.querySelector('#exist')){
       document.querySelector('#exist').style.display = 'none'
     }
-  },2000)
+  },4000)
+}
 </script>
 </html>
